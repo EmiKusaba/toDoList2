@@ -13,12 +13,50 @@ const logTodos = () => {
 //populateTodos
 
 const populateTodos = () => {
-  let toDo = document.getElementById('todo-list')
+  let toDos = document.getElementById('todo-list')
 
   for (i = 0; i < arrayOfTodos.length; i++) {
-    newList = document.createElement('Li')
+    let newList = document.createElement('li')
     newList.innerHTML = arrayOfTodos[i].title
-    toDo.appendChild(newList)
+    toDos.appendChild(newList)
   }
 
+  //complete or Incomplete
+
+  // if (arrayOfTodos[i].completed) {
+  //   newList.classList.add("complete");
+  // } else {
+  //   newList.classList.add("incomplete");
+  // }
 }
+
+//find userID
+//findID
+const findID = () => {
+  let toDos = document.getElementById('todo-list');
+  toDos.innerHTML = "";
+
+  let id = document.getElementById('user-id').value
+  console.log(id)
+  let filtered = arrayOfTodos.filter(x => x.userId == id)
+  for (let i = 0; i < filtered.length; ++i) {
+    let newList = document.createElement('li')
+    newList.innerHTML = filtered[i].title
+    toDos.appendChild(newList)    
+  }
+}
+
+//find complete
+const filterComplete = () => {
+  let toDos = document.getElementById('todo-list');
+  toDos.innerHTML = "";
+
+  let filtered = arrayOfTodos.filter(x => x.completed)
+  for (let i = 0; i < filtered.length; ++i) {
+    let newList = document.createElement('li')
+    newList.innerHTML = filtered[i].title
+    toDos.appendChild(newList)    
+  }
+} 
+
+//find Incomplete
