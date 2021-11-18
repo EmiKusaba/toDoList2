@@ -60,3 +60,13 @@ const filterComplete = () => {
 } 
 
 //find Incomplete
+const filterIncomplete = () => {
+  let toDos = document.getElementById('todo-list');
+  toDos.innerHTML = "";
+  let filtered = arrayOfTodos.filter(x => !x.completed)
+for(i=0; i < filtered.length; i++){
+  let newList = document.createElement('li')
+  newList.innerHTML = filtered[i].title
+  toDos.appendChild(newList)
+}
+}
