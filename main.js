@@ -11,16 +11,26 @@ const logTodos = () => {
 }
 
 //populateTodos
-
+let index = 0
 const populateTodos = () => {
   let toDos = document.getElementById('todo-list')
 
-  for (i = 0; i < arrayOfTodos.length; i++) {
-    let newList = document.createElement('li')
-    newList.innerHTML = arrayOfTodos[i].title
-    toDos.appendChild(newList)
-  }
+//clear all the item from the list
+while (toDos.firstChild) {
+  toDos.removeChild(toDos.firstChild)
+}
+const toDoSlice = arrayOfTodos.slice(index, index + 10)
 
+if (index > arrayOfTodos.length) {
+  index = 0
+}
+index += 10
+for (i = 0; i < toDoSlice.length; i++) {
+  let newListElement = document.createElement("li")
+  newListElement.innerHTML = toDoSlice[i].title
+  toDos.appendChild(newListElement);
+  }
+}
   //complete or Incomplete
 
   // if (arrayOfTodos[i].completed) {
@@ -28,7 +38,6 @@ const populateTodos = () => {
   // } else {
   //   newList.classList.add("incomplete");
   // }
-}
 
 //find userID
 //findID
